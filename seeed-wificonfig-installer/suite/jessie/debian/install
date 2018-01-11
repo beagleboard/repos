@@ -1,7 +1,4 @@
 debian/wificonfig.service /lib/systemd/system/
-debian/wifidog_pre /usr/bin/
-debian/wifidog-pre-startup.service /lib/systemd/system/
 debian/wifidog_server /usr/bin/
 debian/wifidog-gateway.service /lib/systemd/system/
-debian/SoftAp0 /etc/dnsmasq.d/
-debian/wificonfig-0.1.5-39fe0fb-v0.12.13.tar.xz /var/cache/seeed-wificonfig-installer/
+debian/wificonfig-*.tar.xz /var/cache/seeed-wificonfig-installer/

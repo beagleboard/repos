@@ -4,40 +4,6 @@ Author: Chad Miller <chad.miller@canonical.com>
 Bug-Chromium: 154107
 Bug-Ubuntu: 1084852
 
---- a/third_party/webrtc/common_audio/common_audio.gyp
-+++ b/third_party/webrtc/common_audio/common_audio.gyp
-@@ -150,7 +150,7 @@
-             'signal_processing/spl_sqrt_floor.c',
-           ],
-           'conditions': [
--            ['arm_version>=7', {
-+            ['arm_version>=7 and arm_neon==1', {
-               'sources': [
-                 'signal_processing/filter_ar_fast_q12_armv7.S',
-               ],
---- a/third_party/webrtc/common_audio/resampler/sinc_resampler.cc
-+++ b/third_party/webrtc/common_audio/resampler/sinc_resampler.cc
-@@ -139,8 +139,7 @@ void SincResampler::InitializeCPUSpecifi
- #elif defined(WEBRTC_DETECT_NEON)
- #define CONVOLVE_FUNC convolve_proc_
- void SincResampler::InitializeCPUSpecificFeatures() {
--  convolve_proc_ = WebRtc_GetCPUFeaturesARM() & kCPUFeatureNEON ?
--      Convolve_NEON : Convolve_C;
-+  convolve_proc_ = Convolve_C;
- }
- #else
- // Unknown architecture.
---- a/third_party/webrtc/modules/audio_coding/codecs/isac/isacfix.gypi
-+++ b/third_party/webrtc/modules/audio_coding/codecs/isac/isacfix.gypi
-@@ -82,7 +82,7 @@
-             'WEBRTC_LINUX',
-           ],
-         }],
--        ['target_arch=="arm" and arm_version>=7', {
-+        ['target_arch=="arm" and arm_version>=7 and arm_neon==1', {
-           'sources': [
-             'fix/source/lattice_armv7.S',
-             'fix/source/pitch_filter_armv6.S',
 --- a/third_party/webrtc/system_wrappers/source/cpu_features.cc
 +++ b/third_party/webrtc/system_wrappers/source/cpu_features.cc
 @@ -18,6 +18,47 @@

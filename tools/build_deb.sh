@@ -3,15 +3,17 @@
 . version.sh
 
 localdir="/mnt/farm"
+builder=`cat /etc/hostname`
 
 build () {
 	if [ -f ${localdir}/incoming/${suite}/${debian_pkg_name}_${debian_version}/${dsc_file} ] ; then
 		echo "-----------------"
 		echo "sbuild ${options} http://httphost/farm/incoming/${suite}/${debian_pkg_name}_${debian_version}/${dsc_file}"
 		echo "-----------------"
-		sbuild ${options} http://httphost/farm/incoming/${suite}/${debian_pkg_name}_${debian_version}/${dsc_file}
+		sudo sbuild ${options} http://httphost/farm/incoming/${suite}/${debian_pkg_name}_${debian_version}/${dsc_file}
 
 		if [ -f *.changes ] ; then
+			sudo chown -R 1000:1000 ./*
 			if [ -d ${out_dir} ] ; then
 				rm -rf ${out_dir}
 			fi
@@ -24,6 +26,7 @@ build () {
 			cp -v *.dsc ${out_dir} || true
 			cp -v *.udeb ${out_dir} || true
 			cp -v *.diff.gz ${out_dir} || true
+			cp -v *.buildinfo ${out_dir} || true
 			cp -v *${deb_arch}.build ${out_dir} || true
 			touch ./PKG_BUILT
 		fi
@@ -32,11 +35,12 @@ build () {
 
 cleanup_suite () {
 	if [ -d ./${suite} ] ; then
-		rm -rf ./${suite}/
+		sudo rm -rf ./${suite}/
 	fi
 }
 
 run () {
+	touch /tmp/sbuild-BUILDING.lock
 	out_dir="${localdir}/outgoing/${suite}/${deb_arch}/${debian_pkg_name}_${debian_version}/"
 	if [ -f /var/lib/sbuild/${suite}-${deb_arch}.tar.gz ] ; then
 
@@ -60,6 +64,7 @@ run () {
 			cd ../
 		fi
 	fi
+	rm -f /tmp/sbuild-BUILDING.lock || true
 }
 
 runner () {
@@ -70,23 +75,21 @@ runner () {
 
 start_run () {
 	deb_arch="armhf"
-	suite="wheezy" ; runner
 	suite="jessie" ; runner
 	suite="stretch" ; runner
-	suite="trusty" ; runner
-	suite="wily" ; runner
+	suite="buster" ; runner
 	suite="xenial" ; runner
-	suite="yakkety" ; runner
+	suite="artful" ; runner
+	suite="bionic" ; runner
 }
 
 cleanup () {
-	suite="wheezy" ; cleanup_suite
 	suite="jessie" ; cleanup_suite
 	suite="stretch" ; cleanup_suite
-	suite="trusty" ; cleanup_suite
-	suite="wily" ; cleanup_suite
+	suite="buster" ; cleanup_suite
 	suite="xenial" ; cleanup_suite
-	suite="yakkety" ; cleanup_suite
+	suite="artful" ; cleanup_suite
+	suite="bionic" ; cleanup_suite
 }
 
 start_run

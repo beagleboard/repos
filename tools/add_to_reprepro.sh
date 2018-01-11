@@ -26,15 +26,14 @@ runner () {
 start_run () {
 	dist="debian"
 	deb_arch="armhf"
-	suite="wheezy" ; runner
 	suite="jessie" ; runner
 	suite="stretch" ; runner
+	suite="buster" ; runner
 
 	dist="ubuntu"
-	suite="trusty" ; runner
-	suite="wily" ; runner
 	suite="xenial" ; runner
-	suite="yakkety" ; runner
+	suite="artful" ; runner
+	suite="bionic" ; runner
 }
 
 start_run

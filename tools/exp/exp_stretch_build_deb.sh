@@ -5,6 +5,7 @@
 localdir="/mnt/farm"
 
 run () {
+	touch /tmp/sbuild-BUILDING.lock
 	out_dir="${localdir}/outgoing/${suite}/${deb_arch}/${debian_pkg_name}_${debian_version}/"
 	if [ -f /var/lib/sbuild/${suite}-${deb_arch}.tar.gz ] ; then
 		if [ -d ./${suite} ] ; then
@@ -34,6 +35,7 @@ run () {
 					cp -v *.dsc ${out_dir} || true
 					cp -v *.udeb ${out_dir} || true
 					cp -v *.diff.gz ${out_dir} || true
+					cp -v *.buildinfo ${out_dir} || true
 					cp -v *${deb_arch}.build ${out_dir} || true
 				fi
 			fi
@@ -41,6 +43,7 @@ run () {
 
 		cd ../
 	fi
+	rm -f /tmp/sbuild-BUILDING.lock || true
 }
 
 dist="debian"

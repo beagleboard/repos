@@ -83,19 +83,18 @@ archs="armhf source"
 setup_repo
 
 suite="jessie"
-archs="arm64 armhf source"
+archs="armhf source"
 setup_repo
 
 suite="stretch"
-archs="arm64 armhf source"
+archs="armhf source"
+setup_repo
+
+suite="buster"
+archs="armhf source"
 setup_repo
 
 suite="sid"
-archs="arm64 armhf source"
-setup_repo
-
-dist="debian-etnaviv"
-suite="jessie"
 archs="armhf source"
 setup_repo
 
@@ -104,21 +103,13 @@ suite="jessie"
 archs="armhf source"
 setup_repo
 
+dist="debian-exp"
 suite="stretch"
-archs="arm64 armhf source"
+archs="armhf source"
 setup_repo
 
 dist="debian-machinekit"
 suite="wheezy"
-archs="armhf source"
-setup_repo
-
-suite="jessie"
-archs="arm64 armhf source"
-setup_repo
-
-dist="debian-nodejs"
-suite="jessie"
 archs="armhf source"
 setup_repo
 
@@ -137,15 +128,30 @@ suite="vivid"
 archs="armhf source"
 setup_repo
 
+#eol: July 28 2016
 suite="wily"
 archs="armhf source"
 setup_repo
 
 suite="xenial"
-archs="arm64 armhf source"
+archs="armhf source"
 setup_repo
 
+#eol: July 20 2017
 suite="yakkety"
+archs="armhf source"
+setup_repo
+
+#eol: January 2018
+suite="zesty"
+archs="armhf source"
+setup_repo
+
+suite="artful"
+archs="armhf source"
+setup_repo
+
+suite="bionic"
 archs="armhf source"
 setup_repo
 #

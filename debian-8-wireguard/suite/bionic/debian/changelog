@@ -1,0 +1,24 @@
+wireguard (0.0.20171221+git20171221-0rcnee1~bionic+20180104) bionic; urgency=low
+
+  * Rebuild for repos.rcn-ee.com
+
+ -- Robert Nelson <robertcnelson@gmail.com>  Thu, 04 Jan 2018 14:37:44 -0600
+
+wireguard (0.0.20171221+git20171221-0rcnee0~buster+20171227) buster; urgency=low
+
+  * Rebuild for repos.rcn-ee.com
+
+ -- Robert Nelson <robertcnelson@gmail.com>  Wed, 27 Dec 2017 09:48:10 -0600
+
+wireguard (0.0.20171211+git20171211-0rcnee1~buster+20171214) buster; urgency=low
+
+  * Rebuild for repos.rcn-ee.com
+
+ -- Robert Nelson <robertcnelson@gmail.com>  Thu, 14 Dec 2017 13:19:36 -0600
+
+wireguard (0.0.20171127+git20171127-0rcnee1~buster+20171128) buster; urgency=low
+
+  * Rebuild for repos.rcn-ee.com
+
+ -- Robert Nelson <robertcnelson@gmail.com>  Tue, 28 Nov 2017 15:51:45 -0600
+

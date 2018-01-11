@@ -11,9 +11,14 @@ if [ -d /run/systemd/system ] && [ "$1" = remove ]; then
 	systemctl mask --runtime wificonfig.socket || true
 	# stop ${service}.service manually since invoke-rc.d currently doesn't
 	# deal with masked services (see Bug #717109)
-	systemctl stop wifidog-pre-startup.service || true
 	systemctl stop wifidog-gateway.service || true
 	systemctl stop wificonfig.service || true
+
+	#removed:
+	if [ -f /lib/systemd/system/wifidog-pre-startup.service ] ; then
+		systemctl stop wifidog-pre-startup.service || true
+		systemctl disable wifidog-pre-startup.service || true
+	fi
 fi
 
 package="seeed-wificonfig-installer"
@@ -44,9 +49,10 @@ remove_dir () {
 remove_all() {
 	wfile="wificonfig-0.1.0-e4e30e7-v0.12.13.tar.xz" ; remove_file
 	wfile="wificonfig-0.1.4-bc0ac5e-v0.12.13.tar.xz" ; remove_file
+	wfile="wificonfig-0.1.5-8da2e95-v0.12.13.tar.xz" ; remove_file
 
 	#Always keep the current one for quick reinstalls...
-	#wfile="wificonfig-0.1.5-8da2e95-v0.12.13.tar.xz" ; remove_file
+	#wfile="wificonfig-0.1.5-2a7ba99-v0.12.15-bbgw-bone101-dir-change.tar.xz" ; remove_file
 }
 
 case "$1" in

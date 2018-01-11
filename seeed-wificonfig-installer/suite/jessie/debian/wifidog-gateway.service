@@ -1,6 +1,5 @@
 [Unit]
 Description=wifidog gateway Service
-After=wifidog-pre-startup.service
 
 [Service]
 Type=simple

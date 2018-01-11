@@ -13,8 +13,10 @@ git_sha=""
 reprepro_dir="libs/${package_name}"
 dl_path="pool/main/${reprepro_dir}/"
 
-debian_version="${package_version}-1"
+debian_version="${package_version}-2"
 debian_untar="${package_name}_${debian_version}.debian.tar.xz"
 debian_patch=""
+local_patch="rcnee2"
 
-jessie_version="~bpo80+20160301+1"
+jessie_version="~jessie+20170914"
+stretch_version="~stretch+20170914"

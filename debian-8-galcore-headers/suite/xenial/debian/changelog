@@ -1,0 +1,11 @@
+galcore-headers (4.6.6.1381-0rcnee2~bpo1604+20161122+1) xenial; urgency=low
+
+  * Rebuild for repos.rcn-ee.com
+
+ -- Robert Nelson <robertcnelson@gmail.com>  Tue, 22 Nov 2016 13:50:40 -0600
+
+galcore-headers (4.6.6.1381-0rcnee1~bpo80+20161117+1) jessie; urgency=low
+
+  * Rebuild for repos.rcn-ee.com
+
+ -- Robert Nelson <robertcnelson@gmail.com>  Thu, 17 Nov 2016 11:08:17 -0600
