@@ -27,13 +27,15 @@ npm_install () {
 	node_version=$(/usr/bin/nodejs --version || true)
 	echo "${package}:nodejs:[${node_version}]"
 
-	v8="v8.9.4"
+	v6="v6.14.0"
+	v8="v8.11.0"
 
-	node_red="node-red-0.17.5-915d73e"
-	node_red_mongodb="node-red-node-mongodb-0.0.13-9f290f6"
-	node_red_bbio="beaglebone-io-2.3.0-7d20557"
-	node_red_five="johnny-five-0.13.0"
-	node_red_gpio="node-red-contrib-gpio-0.10.0"
+	node_red="node-red-0.18.4-ebb3fb9"
+	node_red_dashboard="node-red-dashboard-2.8.2"
+	node_red_mongodb="node-red-node-mongodb-0.0.14"
+	node_red_gpio="node-red-contrib-gpio-0.14.0"
+	node_red_serial="node-red-node-serialport-0.6.5"
+	node_red_can="node-red-contrib-can-1.0.6"
 
 	npm_project="node-red"
 	case "${node_version}" in
@@ -61,21 +63,26 @@ npm_install () {
 
 	case "${node_version}" in
 	v8.*)
+		npm_project="node-red-dashboard"
+		npm_file="${node_red_dashboard}-${v8}.tar.xz"
+		npm_pkg_install
+
 		npm_project="node-red-node-mongodb"
 		npm_file="${node_red_mongodb}-${v8}.tar.xz"
-		npm_pkg_install
-
-		npm_project="beaglebone-io"
-		npm_file="${node_red_bbio}-${v8}.tar.xz"
-		npm_pkg_install
-
-		npm_project="johnny-five"
-		npm_file="${node_red_five}-${v8}.tar.xz"
 		npm_pkg_install
 
 		npm_project="node-red-contrib-gpio"
 		npm_file="${node_red_gpio}-${v8}.tar.xz"
 		npm_pkg_install
+
+		npm_project="node-red-node-serialport"
+		npm_file="${node_red_serial}-${v8}.tar.xz"
+		npm_pkg_install
+
+		npm_project="node-red-contrib-can"
+		npm_file="${node_red_can}-${v8}.tar.xz"
+		npm_pkg_install
+
 		;;
 	esac
 

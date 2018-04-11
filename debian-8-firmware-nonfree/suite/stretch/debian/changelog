@@ -1,3 +1,9 @@
+firmware-nonfree (20170823-1rcnee1~stretch+20180328) stretch; urgency=low
+
+  * Rebuild for repos.rcn-ee.com
+
+ -- Robert Nelson <robertcnelson@gmail.com>  Wed, 28 Mar 2018 15:10:20 -0500
+
 firmware-nonfree (20170823-1rcnee0~stretch+20170830) stretch; urgency=low
 
   * Rebuild for repos.rcn-ee.com
